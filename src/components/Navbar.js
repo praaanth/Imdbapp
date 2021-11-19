@@ -7,7 +7,7 @@ export default function Navbar({ inputValue,setInputValue }) {
      <span className="Heading">MOVIE DB</span> 
      <input 
      onChange={(e)=> {
-         console.log(e.target.value);
+         setInputValue(e.target.value);
      }}
      placeholder="search..." 
 
