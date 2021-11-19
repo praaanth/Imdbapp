@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import react from 'React'
 import './App.css';
+import { Navbar } from './components';
+import { useState } from 'React';
 
+const API_BASE_URL="http://www.omdbapi.com";
+//&apikey=38f6fcbb
 function App() {
+  const [movies,setMovies] = useState([]);
+  const [inputValue,setInputValue]=useState("");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    hi from react
+   <Navbar inputValue={inputValue} setInputValue={ setInputValue }/>
+    {/* movie list  */}
+    {/* Navbar -->search bar */}
     </div>
   );
 }
