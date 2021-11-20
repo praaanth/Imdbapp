@@ -1,24 +1,33 @@
-import react from 'React'
+
+import { useState } from 'react';
+import axios from 'axios'
 import './App.css';
-import { Navbar } from './components';
-import { useState } from 'React';
+import { Navbar, MovieList } from './components';
 
 const API_BASE_URL="http://www.omdbapi.com";
 //&apikey=38f6fcbb
 function App() {
   const [movies,setMovies] = useState([]);
   const [inputValue,setInputValue]=useState("");
-  const search=(e) => {
-       console.log(e);
-       console.log("i pressed the search button");
-  }
+   const [ isLoading,setIsLoading ] = useState(false);
+  const search=async (e) => {
+     setIsLoading(true);
+       if(e.code==="Enter") {
+        // console.log("i pressed enter");
+        const res=await axios.get(API_BASE_URL+ "/?s=" + inputValue + "&apikey=aa660442");
+        console.log(res.data,"<-- this is the data from api");
+        setIsLoading(false);
+      
+       }
+  };
+
+  
+
   return (
     <div className="App">
-    hi from react
    <Navbar search={search} inputValue={inputValue} setInputValue={ setInputValue }/>
-    {/* movie list  */}
-    {/* Navbar -->search bar */}
-    </div>
+   <MovieList  isLoading={isLoading} Movielist={movies} />
+   </div>
   );
 }
 
