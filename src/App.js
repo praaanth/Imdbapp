@@ -4,7 +4,7 @@ import axios from 'axios'
 import './App.css';
 import { Navbar, MovieList } from './components';
 
-const API_BASE_URL="http://www.omdbapi.com";
+const API_BASE_URL="https://www.omdbapi.com";
 //&apikey=38f6fcbb
 function App() {
   const [movies,setMovies] = useState([]);
@@ -17,7 +17,7 @@ function App() {
         const res=await axios.get(API_BASE_URL+ "/?s=" + inputValue + "&apikey=aa660442");
         console.log(res.data,"<-- this is the data from api");
         setIsLoading(false);
-      
+        setMovies(res.data.Search);
        }
   };
 
